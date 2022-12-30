@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "Jogo-Zumbi.data.unityweb",
+"asmCodeUrl": "Jogo-Zumbi.asm.code.unityweb",
+"asmMemoryUrl": "Jogo-Zumbi.asm.memory.unityweb",
+"asmFrameworkUrl": "Jogo-Zumbi.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
