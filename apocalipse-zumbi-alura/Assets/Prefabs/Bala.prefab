@@ -122,3 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Velocidade: 30
+  SomDeMorte: {fileID: 8300000, guid: 61d13e81b0fa6034cb4d17aa8ab762d4, type: 3}
