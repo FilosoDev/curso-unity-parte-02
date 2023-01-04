@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlaInimigo : MonoBehaviour {
+public class ControlaInimigo : MonoBehaviour, IMatavel {
 
     public GameObject Jogador;
-    public float Velocidade = 5;
-    private Rigidbody rigidbodyInimigo;
-    private Animator animatorInimigo;
     private MovimentoPersonagem movimentaInimigo;
+    private AnimacaoPersonagem animacaoInimigo;
+    private Status statusInimigo;
+    public AudioClip SomDeMorte;
 
 	// Use this for initialization
 	void Start () {
         Jogador = GameObject.FindWithTag("Jogador");
-        int geraTipoZumbi = Random.Range(1, 28);
-        transform.GetChild(geraTipoZumbi).gameObject.SetActive(true);
-        rigidbodyInimigo = GetComponent<Rigidbody>();
-        animatorInimigo = GetComponent<Animator>();
+        animacaoInimigo = GetComponent<AnimacaoPersonagem>();
         movimentaInimigo = GetComponent<MovimentoPersonagem>();
+        AleatorizarZumbis();
+        statusInimigo = GetComponent<Status>();
     }
 	
 
@@ -31,14 +30,14 @@ public class ControlaInimigo : MonoBehaviour {
 
         if (distancia > 2.5)
         {
-            movimentaInimigo.Movimentar(direcao, Velocidade);
+            movimentaInimigo.Movimentar(direcao, statusInimigo.Velocidade);
 
 
-            animatorInimigo.SetBool("Atacando", false);
+            animacaoInimigo.Atacar(false);
         }
         else
         {
-            animatorInimigo.SetBool("Atacando", true);
+            animacaoInimigo.Atacar(true);
         }
     }
 
@@ -46,5 +45,26 @@ public class ControlaInimigo : MonoBehaviour {
     {
         int dano = Random.Range(20, 30);
         Jogador.GetComponent<ControlaJogador>().TomarDano(dano);
+    }
+
+    void AleatorizarZumbis()
+    {
+        int geraTipoZumbi = Random.Range(1, 28);
+        transform.GetChild(geraTipoZumbi).gameObject.SetActive(true);
+    }
+
+    public void TomarDano(int dano)
+    {
+        statusInimigo.Vida -= dano;
+        if (statusInimigo.Vida <= 0)
+        {
+            Morrer();
+        }
+    }
+
+    public void Morrer()
+    {
+        Destroy(gameObject);
+        ControlaAudio.instancia.PlayOneShot(SomDeMorte);
     }
 }

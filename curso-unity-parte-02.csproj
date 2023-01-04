@@ -79,6 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AnimacaoPersonagem.cs" />
     <Compile Include="Assets\Scripts\Bala.cs" />
     <Compile Include="Assets\Scripts\ControlaArma.cs" />
     <Compile Include="Assets\Scripts\ControlaAudio.cs" />
@@ -87,7 +88,10 @@
     <Compile Include="Assets\Scripts\ControlaInterface.cs" />
     <Compile Include="Assets\Scripts\ControlaJogador.cs" />
     <Compile Include="Assets\Scripts\GeradorZumbis.cs" />
+    <Compile Include="Assets\Scripts\IMatavel.cs" />
+    <Compile Include="Assets\Scripts\MovimentoJogador.cs" />
     <Compile Include="Assets\Scripts\MovimentoPersonagem.cs" />
+    <Compile Include="Assets\Scripts\Status.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Modelos3D\Personagens\Animacoes\Animacoes.txt" />
